@@ -1,14 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 
-export default class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      title: "IDog"
-    };
-  }
+import Routes from './routes';
 
-  render() {
-    return <h1>{this.state.title}</h1>;
-  }
-}
+const App = () => <Routes />;
+
+export default App;

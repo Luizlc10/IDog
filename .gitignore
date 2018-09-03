@@ -3,3 +3,6 @@
 
 # build
 /public/bundle.js
+
+# coverage
+/coverage
