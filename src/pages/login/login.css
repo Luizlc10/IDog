@@ -1,0 +1,14 @@
+.login-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-page .login-title {
+  text-align: center;
+  color: #fff;
+  font-size: 36pt;
+  font-weight: bolder;
+  margin: 15px;
+}
+
