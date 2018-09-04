@@ -3,7 +3,28 @@
   height: 300px;
 }
 
+.login-component form {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.login-component form input {
+  margin: 20px 0;
+}
+
 .login-component .login-component-title{
   color: rgb(134, 134, 134);
   font-weight: lighter;
+  margin: 0 20px;
+}
+
+#login-error-text {
+  background: rgb(255, 220, 220);
+  padding: 5px;
+  border-radius: 3px;
+  text-align: center;
+  margin: 15px 0 0 0;
+  color: #e90101;
+  font-weight: bold
 }

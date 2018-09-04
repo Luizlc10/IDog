@@ -40,19 +40,25 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="card login-component">
-        <h1 className="login-component-title">login</h1>
-        <form>
+      <div className="login-component">
+        <form className="card">
+          <h1 className="login-component-title">login</h1>
           <input id="login-email"
+            className="input-email"
             type="email"
             placeholder="E-mail"
             value={this.state.email}
             onChange={e => this.setState({ email: e.target.value })} />
-          <button type="submit" id="login-submit" onClick={this.signup}>
+          <button
+            type="submit"
+            id="login-submit"
+            onClick={this.signup}
+            className="btn shadow-1"
+            >
             ENTRAR
           </button>
+          {this.state.errorText === '' ? null : <p id="login-error-text">{this.state.errorText}</p>}
         </form>
-        <p id="login-error-text">{this.state.errorText}</p>
       </div>
     )
   }
