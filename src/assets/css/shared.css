@@ -1,0 +1,35 @@
+.card {
+  -webkit-box-shadow: 0px 0px 23px 0px rgba(20, 20, 20, 0.38);
+  -moz-box-shadow:    0px 0px 23px 0px rgba(20, 20, 20, 0.38);
+  box-shadow:         0px 0px 23px 0px rgba(20, 20, 20, 0.38);
+  background: #fff;
+  border-radius: 5px;
+}
+
+.input-email {
+  height: 20px;
+  padding: 10px;
+  border-radius: 3px;
+  border: 1px solid rgb(129, 129, 129);
+}
+
+.btn {
+  background: #FFA500;
+  border-radius: 5px;
+  border: none;
+  height: 40px;
+  color: #fff;
+  transition: 0.2s;
+  font-weight: bold;
+}
+
+.btn:hover {
+  transition: 0.2s;
+  background: #cc8605;
+}
+
+.shadow-1 {
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(20, 20, 20, 0.38);
+  -moz-box-shadow:    0px 0px 5px 0px rgba(20, 20, 20, 0.38);
+  box-shadow:         0px 0px 5px 0px rgba(20, 20, 20, 0.38);
+}
