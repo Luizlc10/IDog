@@ -24,8 +24,7 @@
   transition: 0.2s;
 }
 
-
-.Link-active  {
+.Link:focus  {
   font-size: 40pt;
   transition: 0.2s;
 }
