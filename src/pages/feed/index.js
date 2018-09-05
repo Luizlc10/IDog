@@ -5,7 +5,7 @@ import './feed.css'
 import api from '../../services/api';
 
 import Menu from '../../components/menu';
-
+import Galery from '../../components/galery';
 export default class Feed extends Component {
   constructor(props) {
     super(props);
@@ -50,6 +50,7 @@ export default class Feed extends Component {
       <div className="feed-page">
         <h1 className="feed-page-title">IDog</h1>
         <Menu />
+        {!this.state.data ? 'loading...' : <Galery list={this.state.data.list}/>}
       </div>
     )
   }
