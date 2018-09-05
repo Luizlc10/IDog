@@ -1,0 +1,31 @@
+.menu ul {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+}
+
+.menu ul li {
+  margin: 10px;
+  font-size: 25pt;
+}
+
+.Link {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.Link:hover  {
+  font-size: 30pt;
+  transition: 0.2s;
+}
+
+
+.Link-active  {
+  font-size: 40pt;
+  transition: 0.2s;
+}

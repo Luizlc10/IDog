@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch, Link } from 'react-router-dom'
 
 import './feed.css'
 
 import api from '../../services/api';
+
+import Menu from '../../components/menu';
+
 export default class Feed extends Component {
   constructor(props) {
     super(props);
@@ -47,6 +49,7 @@ export default class Feed extends Component {
     return (
       <div className="feed-page">
         <h1 className="feed-page-title">IDog</h1>
+        <Menu />
       </div>
     )
   }
