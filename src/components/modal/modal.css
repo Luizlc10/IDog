@@ -1,0 +1,29 @@
+.modal {
+  z-index: 1000;
+  display: block;
+  position: fixed;
+  width: 100%;
+  height: auto;
+  background: hsla(0, 0%, 0%, 0.568);
+  transition: 0.3s;
+}
+
+.modal .modal-content {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal .modal-image {
+  border-radius: 5px;
+  border: 15px solid #fff;
+  max-height: 90vh;
+  max-width: 90vh;
+  width: auto;
+  height: auto;
+}
+
+.modal .modal-image:hover {
+  cursor: default;
+}

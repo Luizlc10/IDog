@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import './feed.css'
 
@@ -7,12 +8,17 @@ import api from '../../services/api';
 
 import Menu from '../../components/menu';
 import Galery from '../../components/galery';
-export default class Feed extends Component {
+import Modal from '../../components/modal';
+
+class Feed extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentBeed: this.props.location.search,
-      isLoading: false
+      isLoading: false,
+      vars: {
+        category: '',
+        id: ''
+      }
     }
   }
 
@@ -29,23 +35,26 @@ export default class Feed extends Component {
   }
 
   updateVars = () => {
-    this.setState({ vars: GetUrlVars(this.props.location.search) });
+    this.setState({ vars: GetUrlVars() });
   }
 
   updateBeed = () => {
-    let bead = this.state.vars.category
-    switch (bead) {
+    let { category } = GetUrlVars();
+    switch (category) {
       case 'husky':
-        this.getDogs(bead);
+        this.getDogs(category);
         break;
       case 'labrador':
-        this.getDogs(bead);
+        this.getDogs(category);
         break;
       case 'hound':
-        this.getDogs(bead);
+        this.getDogs(category);
+        break;
+      case 'hound-english':
+        this.getDogs('hound');
         break;
       case 'pug':
-        this.getDogs(bead);
+        this.getDogs(category);
         break;
       default:
         this.getDogs('husky');
@@ -74,18 +83,29 @@ export default class Feed extends Component {
     } catch (error) {
       this.setState({
         errorText: error.response.data.error.message,
-        isLoading: false,
+        isLoading: false
       });
     }
   }
 
+  logout() {
+    localStorage.clear();
+  }
+
   render() {
-    return (
-      <div className="feed-page">
+    return <div className="feed-page">
+        {!this.state.vars.id ? null : <Modal vars={this.state.vars} />}
         <h1 className="feed-page-title">IDog</h1>
+        <Link to="/" onClick={this.logout} className="feed-page-logout">sair</Link>
         <Menu />
-        {!this.state.data ? 'loading...' : <Galery list={this.state.data.list}/>}
-      </div>
-    )
+        {!this.state.data ?
+          <div className="loading">
+            <h1>loading...</h1>
+          </div>
+          :
+          <Galery list={this.state.data.list} />}
+      </div>;
   }
 }
+
+export default Feed;
