@@ -7,12 +7,17 @@ import api from '../../services/api';
 
 import Menu from '../../components/menu';
 import Galery from '../../components/galery';
+import Modal from '../../components/modal';
+
 export default class Feed extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentBeed: this.props.location.search,
-      isLoading: false
+      isLoading: false,
+      vars: {
+        category: '',
+        id: ''
+      }
     }
   }
 
@@ -48,7 +53,6 @@ export default class Feed extends Component {
         this.getDogs(category);
         break;
       default:
-        this.getDogs('husky');
     }
   }
 
@@ -82,6 +86,7 @@ export default class Feed extends Component {
   render() {
     return (
       <div className="feed-page">
+        {!this.state.vars.id ? null : <Modal vars={this.state.vars} />}
         <h1 className="feed-page-title">IDog</h1>
         <Menu />
         {!this.state.data ? 'loading...' : <Galery list={this.state.data.list}/>}
