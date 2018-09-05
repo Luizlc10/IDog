@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+import './galery.css';
+
+import Cell from '../cell';
 export default class Menu extends Component {
   constructor(props) {
     super(props);
@@ -11,7 +14,7 @@ export default class Menu extends Component {
         <ul>
           {this.props.list.map((item, i) => {
             return(
-              <li key={i}>{item}</li>
+              <li key={i}><Cell item={item}/></li>
             )
           })}
         </ul>
