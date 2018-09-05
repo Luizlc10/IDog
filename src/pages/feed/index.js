@@ -10,16 +10,43 @@ export default class Feed extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentBeed: '',
+      currentBeed: this.props.location.search,
       isLoading: false
     }
   }
 
   componentDidMount() {
-    this.getDogs();
+    console.log(this.props.location.search)
+    this.getDogs('husky');
   }
 
-  getDogs = async () => {
+  componentDidUpdate(prevProps) {
+    if (prevProps.location.search !== this.props.location.search) {
+      this.updateBeed(this.props.location.search);
+    }
+  }
+
+  updateBeed = bead => {
+    bead = bead.split('=')[1];
+    switch (bead) {
+      case 'husky':
+        this.getDogs(bead);
+        break;
+      case 'labrador':
+        this.getDogs(bead);
+        break;
+      case 'hound':
+        this.getDogs(bead);
+        break;
+      case 'pug':
+        this.getDogs(bead);
+        break;
+      default:
+        this.getDogs('husky');
+    }
+  }
+
+  getDogs = async (beed) => {
     try {
       this.setState({
         isLoading: true,
@@ -27,9 +54,10 @@ export default class Feed extends Component {
       });
 
       const token = await localStorage.getItem('token');
-      const req = await api.get('/feed', { headers: {
-          Authorization: token
-        }
+      const req = await api.get(`/feed?category=${beed}`, {
+        headers: {
+          Authorization: token,
+        },
       });
 
       this.setState({
@@ -49,7 +77,7 @@ export default class Feed extends Component {
     return (
       <div className="feed-page">
         <h1 className="feed-page-title">IDog</h1>
-        <Menu />
+        <Menu onChange={this.updateBeed}/>
         {!this.state.data ? 'loading...' : <Galery list={this.state.data.list}/>}
       </div>
     )
