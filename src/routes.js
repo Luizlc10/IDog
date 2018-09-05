@@ -3,7 +3,8 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 
 import { isAuthenticated } from './auth';
 
-import LoginPage from './pages/login';
+import LoginPage from './pages/login'
+import FeedPage from './pages/feed';
 
 const PrivateRoute = ({ component: Component, props }) => (
   <Route
@@ -21,9 +22,10 @@ const PrivateRoute = ({ component: Component, props }) => (
 const Routes = () => (
   <BrowserRouter>
     <Switch>
-      <Route exact path="/" component={ LoginPage } />
+      <Route exact path="/" component={LoginPage} />
+      <PrivateRoute path="/feed" component={FeedPage} />
     </Switch>
   </BrowserRouter>
-);
+)
 
 export default Routes;
