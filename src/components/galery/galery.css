@@ -1,0 +1,13 @@
+.galery {
+  margin: 40px;
+}
+
+.galery ul {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  flex-wrap: wrap;
+  padding: 0 30px;
+  align-items: center;
+  justify-content: space-around;
+}

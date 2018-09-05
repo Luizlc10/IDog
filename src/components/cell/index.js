@@ -1,15 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-export default class Cell extends Component {
-  constructor(props) {
-    super(props);
-  }
+import './cell.css';
+const Cell = props => (
+  <Link
+    className="cell"
+      to={{
+      pathname: '/feed/',
+      search: '?category=husky',
+    }}
+  >
+    <div
+      className="card"
+      style={{
+        backgroundImage: `url(${props.item})`,
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center center',
+      }}
+    />
+  </Link>
+);
 
-  render() {
-    return (
-      <div className="cell">
-        <h1 >cell</h1>
-      </div>
-    )
-  }
-}
+export default Cell;

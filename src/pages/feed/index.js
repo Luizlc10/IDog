@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import './feed.css'
 
+import { GetUrlVars } from '../../utils';
 import api from '../../services/api';
 
 import Menu from '../../components/menu';
@@ -16,18 +17,23 @@ export default class Feed extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.location.search)
     this.getDogs('husky');
+    this.updateVars();
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.location.search !== this.props.location.search) {
-      this.updateBeed(this.props.location.search);
+      this.updateVars();
+      this.updateBeed();
     }
   }
 
-  updateBeed = bead => {
-    bead = bead.split('=')[1];
+  updateVars = () => {
+    this.setState({ vars: GetUrlVars(this.props.location.search) });
+  }
+
+  updateBeed = () => {
+    let bead = this.state.vars.category
     switch (bead) {
       case 'husky':
         this.getDogs(bead);
@@ -77,7 +83,7 @@ export default class Feed extends Component {
     return (
       <div className="feed-page">
         <h1 className="feed-page-title">IDog</h1>
-        <Menu onChange={this.updateBeed}/>
+        <Menu />
         {!this.state.data ? 'loading...' : <Galery list={this.state.data.list}/>}
       </div>
     )
