@@ -29,23 +29,23 @@ export default class Feed extends Component {
   }
 
   updateVars = () => {
-    this.setState({ vars: GetUrlVars(this.props.location.search) });
+    this.setState({ vars: GetUrlVars() });
   }
 
   updateBeed = () => {
-    let bead = this.state.vars.category
-    switch (bead) {
+    let { category } = GetUrlVars();
+    switch (category) {
       case 'husky':
-        this.getDogs(bead);
+        this.getDogs(category);
         break;
       case 'labrador':
-        this.getDogs(bead);
+        this.getDogs(category);
         break;
       case 'hound':
-        this.getDogs(bead);
+        this.getDogs(category);
         break;
       case 'pug':
-        this.getDogs(bead);
+        this.getDogs(category);
         break;
       default:
         this.getDogs('husky');
