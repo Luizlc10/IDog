@@ -5,10 +5,12 @@
   align-items: center;
   justify-content: center;
   height: 50px;
+  max-width: 100vw;
+  flex-wrap: wrap;
 }
 
 .menu ul li {
-  margin: 10px;
+  margin: 0 10px;
   font-size: 25pt;
 }
 

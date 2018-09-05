@@ -19,6 +19,8 @@
   border-radius: 5px;
   border: 15px solid #fff;
   max-height: 90vh;
+  max-width: 90vh;
+  width: auto;
   height: auto;
 }
 

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import './feed.css'
 
@@ -9,7 +10,7 @@ import Menu from '../../components/menu';
 import Galery from '../../components/galery';
 import Modal from '../../components/modal';
 
-export default class Feed extends Component {
+class Feed extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -49,10 +50,14 @@ export default class Feed extends Component {
       case 'hound':
         this.getDogs(category);
         break;
+      case 'hound-english':
+        this.getDogs('hound');
+        break;
       case 'pug':
         this.getDogs(category);
         break;
       default:
+        this.getDogs('husky');
     }
   }
 
@@ -78,19 +83,29 @@ export default class Feed extends Component {
     } catch (error) {
       this.setState({
         errorText: error.response.data.error.message,
-        isLoading: false,
+        isLoading: false
       });
     }
   }
 
+  logout() {
+    localStorage.clear();
+  }
+
   render() {
-    return (
-      <div className="feed-page">
+    return <div className="feed-page">
         {!this.state.vars.id ? null : <Modal vars={this.state.vars} />}
         <h1 className="feed-page-title">IDog</h1>
+        <Link to="/" onClick={this.logout} className="feed-page-logout">sair</Link>
         <Menu />
-        {!this.state.data ? 'loading...' : <Galery list={this.state.data.list}/>}
-      </div>
-    )
+        {!this.state.data ?
+          <div className="loading">
+            <h1>loading...</h1>
+          </div>
+          :
+          <Galery list={this.state.data.list} />}
+      </div>;
   }
 }
+
+export default Feed;

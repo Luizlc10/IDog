@@ -1,3 +1,24 @@
-.feed-page {
+.feed-page .feed-page-title {
+  color: #fff;
+  text-align: center;
+  font-size: 40pt;
+  padding: 20px;
+}
 
+.feed-page .feed-page-logout {
+  color: #fff;
+  position: absolute;
+  right: 25px;
+  top: 25px;
+  text-align: center;
+  font-size: 16pt;
+  text-decoration: none;
+}
+
+.feed-page .loading{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #ffffff;
 }
